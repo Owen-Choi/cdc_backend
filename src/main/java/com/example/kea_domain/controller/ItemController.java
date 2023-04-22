@@ -6,11 +6,13 @@ import com.example.kea_domain.domain.Item;
 import com.example.kea_domain.repository.DataRepository;
 import com.example.kea_domain.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class ItemController {
@@ -34,6 +36,7 @@ public class ItemController {
 
     @PostMapping("/api/data")
     public String add(@RequestBody Data data) {
+        log.error(data.toString());
         dataRepository.save(data);
         return "insert";
     }
